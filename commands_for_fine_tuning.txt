@@ -1,0 +1,8 @@
+export OPENAI_API_KEY=""
+## to train model
+openai api fine_tunes.create -t ./Fine_Tune/train_csv_prepared.jsonl -m ada
+openai api fine_tunes.follow -i ft-AZN07m1dbMJLNutiTaFGVbDX
+openai api completions.create -m ada:ft-personal-2023-02-14-10-54-59 -p "explain in detail what does QA Rev"
+
+## to create data
+openai tools fine_tunes.prepare_data -f ./Fine_Tune/train_csv.csv
