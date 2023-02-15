@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>10Pearls</title>
+    <style>
+      body {
+        background-color: lightgray;
+        text-align: center;
+        font-family: sans-serif;
+      }
+      h1 {
+        color: blue;
+        font-size: 48px;
+        margin-top: 50px;
+      }
+      form {
+        margin-top: 100px;
+      }
+      input[type="text"] {
+        padding: 10px;
+        font-size: 18px;
+        width: 60%;
+        margin-bottom: 20px;
+      }
+      input[type="submit"] {
+        padding: 10px 20px;
+        font-size: 18px;
+        background-color: blue;
+        color: white;
+        border: none;
+        border-radius: 5px;
+      }
+      p {
+        margin-top: 50px;
+        font-size: 24px;
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>10Pearls ChatGPT</h1>
+    <form action="/" method="post">
+        <input type="text" name="prompt" placeholder="Enter your prompt..." required>
+        <input type="submit" value="Submit">
+    </form>
+    {% if response %}
+        <div class="response">
+            <h3>Response</h3>
+            <p>{{ response }}</p>
+        </div>
+    {% endif %}
+</body>
+</html>
