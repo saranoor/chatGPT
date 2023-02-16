@@ -4,9 +4,9 @@ import webbrowser
 import requests
 
 app = Flask(__name__)
-API_KEY = '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' # Add your API key here
+API_KEY = '' # Add your API key here
 openai.api_key = API_KEY
-model = 'ada:ft-personal-2023-02-14-10-54-59'
+model = 'davinci:ft-personal-2023-02-15-12-48-41'
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -18,10 +18,11 @@ def index():
             max_tokens=2000
         )
         res = response.choices[0].text
+        with open('/home/saranoor/Data/chatGPT_fine_tuning/chatGPT/response.txt','w', newline='') as r:
+            r.write(res)
         htmlstring = res
         with open("code.html", "w") as file:
             file.write(htmlstring)
-            
         generated_code = res
 
         webbrowser.open("code.html")
@@ -29,4 +30,4 @@ def index():
     return render_template('index.html')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
