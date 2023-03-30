@@ -16,7 +16,7 @@ from openai.embeddings_utils import get_embedding
 embedding_model = "text-embedding-ada-002"
 embedding_encoding = "cl100k_base"  # this the encoding for text-embedding-ada-002
 max_tokens = 8000  # the maximum for text-embedding-ada-002 is 8191
-API_KEY = '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' # Add your API key here
+API_KEY = '' # Add your API key here
 openai.api_key = API_KEY
 def parse_float_list(string):
     # Remove brackets and split by comma
@@ -26,7 +26,7 @@ def parse_float_list(string):
       return np.nan
     return [float(value) for value in values]
 
-df_test=pd.read_csv('./data_policy/qs_ans_embeddings.csv', converters={'embeddings': parse_float_list})
+df_test=pd.read_csv('./data_policy/qs_ans_embeddings_2023.csv', converters={'embeddings': parse_float_list})
 df_test.drop(['Unnamed: 0'],axis=1, inplace=True)
 
 
@@ -165,7 +165,6 @@ def index():
         with open("code.html", "w", newline='') as file:
             file.write(htmlstring.replace('end_it', '\n'))
 
-        #webbrowser.open("code.html")
         return render_template('index.html', response=res)
     return render_template('index.html')
 
